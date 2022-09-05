@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Simple Counter App</title>
+	<!-- vue-3 CDN -->
+	<script src="https://unpkg.com/vue@3"></script>
+	<!-- css -->
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="counter container">
+		<h1 class="counter__title"> {{title}} </h1>
+		<h4 class="counter__value" :class="classBox"> {{value}} </h4>
+		<!-- <div class="btns">
+			<div v-on:click="dec" class="btn btn-dec">Decrease</div>
+			<div @click="res"     class="btn btn-reset">Reset</div>
+			<div @click="inc"     class="btn btn-inc">Increase</div>
+		</div> -->
+		<div class="btns">
+			<div @click="value--" class="btn btn-dec">Decrease</div>
+			<div @click="value = 0" class="btn btn-reset">Reset</div>
+			<div @click="value++" class="btn btn-inc">Increase</div>
+		</div>
+		<div class="description">
+			<p v-if="value < 0" 
+			   :class="{'red--text' : value < 0, redB : value < 0 }">
+				Negatif
+			</p>			
+			<p v-else-if="value == 0">
+				Sıfır
+			</p>
+			<p v-else 
+			   :class="{'green--text' : value > 0, 'greenB' : value > 0}">
+				Pozitif
+			</p>
+		</div>
+	</div>
+
+	<script src="app.js"></script>
+</body>
+</html>
